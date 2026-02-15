@@ -107,7 +107,7 @@ python -m http.server 8000
 - Bootstrap 5.3.3
 - Font Awesome 6.5.2
 - Chart.js 4.4.2
-  all button must be red color.
+- All button must be red color.
 
 ## Common Tasks
 

@@ -62,19 +62,28 @@
         <!-- Username input section -->
         <div class="card mb-3">
             <div class="card-body">
-                <div class="mb-3">
-                    <label for="username-input" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username-input"
-                        placeholder="Enter username (min 5 chars, 1 uppercase, 1 special char)">
-                    <div id="username-feedback" class="invalid-feedback">
-                        Username must be at least 5 characters, contain 1 uppercase letter and 1 special character
+                <form id="username-form" novalidate>
+                    <div class="mb-3">
+                        <label for="username-input" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="username-input"
+                            placeholder="Enter username (min 5 chars, 1 uppercase, 1 special char)">
+                        <div id="username-feedback" class="invalid-feedback">
+                            Username must be at least 5 characters, contain 1 uppercase letter and 1 special character
+                        </div>
                     </div>
-                </div>
-                <button id="submit-username" type="button" class="btn btn-danger">
-                    <i class="fa-solid fa-check me-1"></i> Submit
-                </button>
+                    <button id="submit-username" type="submit" class="btn btn-danger">
+                        <i class="fa-solid fa-check me-1"></i> Submit
+                    </button>
+                </form>
             </div>
         </div>
+
+
+
+
+
+
+
 
         <!-- add download button -->
         <div class="mb-3">

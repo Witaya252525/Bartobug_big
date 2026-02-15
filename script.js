@@ -381,11 +381,11 @@
 
   // Wire username validation and submit
   function wireUsernameSubmit() {
+    const usernameForm = qs("#username-form");
     const usernameInput = qs("#username-input");
-    const submitBtn = qs("#submit-username");
     const feedback = qs("#username-feedback");
 
-    if (!usernameInput || !submitBtn) return;
+    if (!usernameForm || !usernameInput) return;
 
     // Real-time validation on input
     usernameInput.addEventListener("input", () => {
@@ -403,8 +403,9 @@
       }
     });
 
-    // Submit button click handler
-    submitBtn.addEventListener("click", () => {
+    // Form submit handler
+    usernameForm.addEventListener("submit", (ev) => {
+      ev.preventDefault();
       const value = usernameInput.value;
       if (validateUsername(value)) {
         alert(`Username "${value}" submitted successfully!`);
