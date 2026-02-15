@@ -60,6 +60,16 @@
     return (Math.random() * (max - min) + min).toFixed(2);
   }
 
+  // Validate username
+  function validateUsername(username) {
+    const hasUppercase = /[A-Z]/.test(username);
+    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(
+      username,
+    );
+    const isLongEnough = username.length >= 5;
+    return hasUppercase && hasSpecialChar && isLongEnough;
+  }
+
   // Render inputs for 12 months
   function renderDataInputs() {
     const container = qs(`#${monthlyInputsContainerId}`);
@@ -369,6 +379,45 @@
     });
   }
 
+  // Wire username validation and submit
+  function wireUsernameSubmit() {
+    const usernameInput = qs("#username-input");
+    const submitBtn = qs("#submit-username");
+    const feedback = qs("#username-feedback");
+
+    if (!usernameInput || !submitBtn) return;
+
+    // Real-time validation on input
+    usernameInput.addEventListener("input", () => {
+      const value = usernameInput.value;
+      if (validateUsername(value)) {
+        usernameInput.classList.remove("is-invalid");
+        usernameInput.classList.add("is-valid");
+      } else {
+        usernameInput.classList.remove("is-valid");
+        if (value.length > 0) {
+          usernameInput.classList.add("is-invalid");
+        } else {
+          usernameInput.classList.remove("is-invalid");
+        }
+      }
+    });
+
+    // Submit button click handler
+    submitBtn.addEventListener("click", () => {
+      const value = usernameInput.value;
+      if (validateUsername(value)) {
+        alert(`Username "${value}" submitted successfully!`);
+        usernameInput.classList.remove("is-invalid");
+        usernameInput.classList.add("is-valid");
+      } else {
+        usernameInput.classList.add("is-invalid");
+        usernameInput.classList.remove("is-valid");
+        alert("Invalid username. Please meet all requirements.");
+      }
+    });
+  }
+
   // Initialize everything on load
   window.addEventListener("load", () => {
     renderDataInputs();
@@ -376,6 +425,7 @@
     attachLiveListeners();
     wireUpdateButton();
     wireDownloadButton();
+    wireUsernameSubmit();
 
     // initial chart with zeros from inputs
     const initialData = getMonthlyData();

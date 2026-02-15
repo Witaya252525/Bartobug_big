@@ -102,6 +102,13 @@ python -m http.server 8000
 - No localStorage, no backend API
 - This is intentional - ephemeral demo app
 
+### UI elements
+
+- Bootstrap 5.3.3
+- Font Awesome 6.5.2
+- Chart.js 4.4.2
+  all button must be red color.
+
 ## Common Tasks
 
 ### Adding a New Month
