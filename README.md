@@ -22,3 +22,6 @@ use .github copilot-instructions.md file to get more details about the project.
 this project is created by github copilot with no database
 and create AGENT.md file to get more details about the project.
 validate form with .github/validate-form.md file. ( use javascript to validate form from index.html file)
+use jest to test the form validation.
+use regular expression to validate form.
+slah command /test setup or /test , user chat please perform units test for form validation.
