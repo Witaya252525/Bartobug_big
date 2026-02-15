@@ -3,14 +3,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample html</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bucks2Bar — Data & Chart</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Shards UI (optional add-on for polished components) -->
+    <link href="https://cdn.jsdelivr.net/npm/shards-ui@1.2.0/dist/css/shards.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        .chart-container { width: 100%; max-width: 900px; margin: 0 auto; }
+        .month-row { gap: .5rem; align-items: center; }
+        .input-col { max-width: 160px; }
+        .tab-btn { min-width: 120px; }
+        .invalid-feedback { display:block; }
+    </style>
 </head>
 <body>
-    <h1>Sample html</h1>
-    <p>This is a sample html file.</p>
-    
+    <div class="container py-4" id="app">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="h4 mb-0">Bucks2Bar</h1>
+            <div>
+                <div role="tablist" aria-label="Main tabs" class="btn-group" id="tabs">
+                    <button id="tab-btn-data" class="btn btn-outline-primary tab-btn" role="tab" aria-controls="tab-data" aria-selected="true">
+                        <i class="fa-solid fa-table me-1"></i> Data
+                    </button>
+                    <button id="tab-btn-chart" class="btn btn-outline-primary tab-btn" role="tab" aria-controls="tab-chart" aria-selected="false">
+                        <i class="fa-solid fa-chart-bar me-1"></i> Chart
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panels -->
+        <section id="tab-data" role="tabpanel" aria-labelledby="tab-btn-data">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <form id="data-form" novalidate>
+                        <div id="form-alert" class="alert alert-danger d-none" role="alert"></div>
+
+                        <div id="monthly-inputs" class="d-grid gap-2"></div>
+
+                        <div class="mt-3 d-flex gap-2">
+                            <button id="update-chart" type="button" class="btn btn-primary">
+                                <i class="fa-solid fa-sync me-1"></i> Update Chart
+                            </button>
+                            <small class="text-muted align-self-center">Live updates enabled (debounced)</small>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-chart" role="tabpanel" aria-labelledby="tab-btn-chart" hidden>
+            <div class="card">
+                <div class="card-body">
+                    <div id="chart-container" class="chart-container">
+                        <canvas id="incomeExpenseChart" height="320"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Bootstrap JS bundle (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Your script (loaded last) -->
+    <script src="script.js"></script>
 </body>
 </html>
 
