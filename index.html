@@ -1,7 +1,6 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -17,27 +16,55 @@
     <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.0/css/all.min.css" rel="stylesheet">
 
     <style>
-        .chart-container { width: 100%; max-width: 900px; margin: 0 auto; }
-        .month-row { gap: .5rem; align-items: center; }
-        .input-col { max-width: 160px; }
-        .tab-btn { min-width: 120px; }
-        .invalid-feedback { display:block; }
+        .chart-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .month-row {
+            gap: .5rem;
+            align-items: center;
+        }
+
+        .input-col {
+            max-width: 160px;
+        }
+
+        .tab-btn {
+            min-width: 120px;
+        }
+
+        .invalid-feedback {
+            display: block;
+        }
     </style>
 </head>
+
 <body>
     <div class="container py-4" id="app">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h1 class="h4 mb-0">Bucks2Bar</h1>
             <div>
                 <div role="tablist" aria-label="Main tabs" class="btn-group" id="tabs">
-                    <button id="tab-btn-data" class="btn btn-outline-primary tab-btn" role="tab" aria-controls="tab-data" aria-selected="true">
+                    <button id="tab-btn-data" class="btn btn-outline-primary tab-btn" role="tab"
+                        aria-controls="tab-data" aria-selected="true">
                         <i class="fa-solid fa-table me-1"></i> Data
                     </button>
-                    <button id="tab-btn-chart" class="btn btn-outline-primary tab-btn" role="tab" aria-controls="tab-chart" aria-selected="false">
+                    <button id="tab-btn-chart" class="btn btn-outline-primary tab-btn" role="tab"
+                        aria-controls="tab-chart" aria-selected="false">
                         <i class="fa-solid fa-chart-bar me-1"></i> Chart
                     </button>
                 </div>
             </div>
+        </div>
+
+
+        <!-- add download button -->
+        <div class="mb-3">
+            <button id="download-data" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-download me-1"></i> Download Data
+            </button>
         </div>
 
         <!-- Panels -->
@@ -63,6 +90,11 @@
         <section id="tab-chart" role="tabpanel" aria-labelledby="tab-btn-chart" hidden>
             <div class="card">
                 <div class="card-body">
+                    <div class="mb-3">
+                        <button id="download-chart" class="btn btn-success">
+                            <i class="fa-solid fa-download me-1"></i> Download Chart as PNG
+                        </button>
+                    </div>
                     <div id="chart-container" class="chart-container">
                         <canvas id="incomeExpenseChart" height="320"></canvas>
                     </div>
@@ -80,6 +112,5 @@
     <!-- Your script (loaded last) -->
     <script src="script.js"></script>
 </body>
+
 </html>
-
-
