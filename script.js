@@ -1,6 +1,14 @@
 // Bucks2Bar: live-updating Income vs Expense chart (Jan-Dec)
 // Requirements: numeric-only, no negatives, debounced live updates, no persistence.
 
+// Validate username (exported for testing)
+function validateUsername(username) {
+  const hasUppercase = /[A-Z]/.test(username);
+  const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(username);
+  const isLongEnough = username.length >= 5;
+  return hasUppercase && hasSpecialChar && isLongEnough;
+}
+
 (() => {
   const months = [
     "Jan",
@@ -58,16 +66,6 @@
   // Generate random number between min and max
   function randomAmount(min, max) {
     return (Math.random() * (max - min) + min).toFixed(2);
-  }
-
-  // Validate username
-  function validateUsername(username) {
-    const hasUppercase = /[A-Z]/.test(username);
-    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(
-      username,
-    );
-    const isLongEnough = username.length >= 5;
-    return hasUppercase && hasSpecialChar && isLongEnough;
   }
 
   // Render inputs for 12 months
@@ -433,3 +431,8 @@
     createChart(initialData);
   });
 })();
+
+// Export for testing (Node.js environment only)
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { validateUsername };
+}
